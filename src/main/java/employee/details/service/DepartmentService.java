@@ -18,19 +18,32 @@ public class DepartmentService {
 
 	public void addDepartment(Department department) {
 		dept.save(department);
-		
+
 	}
 
-   public List<Department> getAllDepartment(){
+	public DepartmentService(DepartmentRepo dept) {
+		super();
+		this.dept = dept;
+	}
+
+	public List<Department> getAllDepartment() {
 		List<Department> department = new ArrayList<>();
 		dept.findAll().forEach(department::add);
 		return department;
 	}
-   public void updateDepartment(String id, Department department) {
+
+//   public List<Department> getAllDepartment() {
+//       List<Department> students = new ArrayList<>();
+//       Department student = new Department();
+//       students.add(student);
+//       return students;
+//   }
+	public void updateDepartment(String id, Department department) {
 		dept.save(department);
-		
+
 	}
-   public Optional<Department> getDepartmentById(Integer id) {
+
+	public Optional<Department> getDepartmentById(Integer id) {
 		// TODO Auto-generated method stub
 		Optional<Department> e = dept.findById(id);
 		return e;

@@ -1,4 +1,5 @@
 package employee.details.entity;
+
 import java.util.Optional;
 
 import javax.persistence.Column;
@@ -11,28 +12,28 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="address")
+@Table(name = "address")
 public class Address {
 	@Id
-	@GeneratedValue(strategy= GenerationType.AUTO)
-	@Column(name="id")
+	//@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
 	private int id;
-	@Column(name="type")
+	@Column(name = "type")
 	private String type;
-	@Column(name="line1")
+	@Column(name = "line1")
 	private String line1;
-	@Column(name="line2")
+	@Column(name = "line2")
 	private String line2;
-	@Column(name="city")
+	@Column(name = "city")
 	private String city;
-	@Column(name="state")
+	@Column(name = "state")
 	private String state;
-	@Column(name="country")
+	@Column(name = "country")
 	private String country;
 	@ManyToOne()
-	@JoinColumn(name = "emp_id",referencedColumnName = "id")
-    Employee employee;
-	
+	@JoinColumn(name = "emp_id", referencedColumnName = "id")
+	Employee employee;
+
 	public Address() {
 		// TODO Auto-generated constructor stub
 	}
@@ -111,5 +112,5 @@ public class Address {
 		this.state = state;
 		this.country = country;
 	}
-	
+
 }

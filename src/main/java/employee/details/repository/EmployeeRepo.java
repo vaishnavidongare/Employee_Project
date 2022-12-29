@@ -10,12 +10,16 @@ import employee.details.entity.Address;
 import employee.details.entity.Department;
 import employee.details.entity.Employee;
 
-public interface EmployeeRepo extends CrudRepository<Employee,Integer>  {
-	Employee findById(int emp_id);	
-	
+public interface EmployeeRepo extends CrudRepository<Employee, Integer> {
+	Employee findById(int emp_id);
+
 	@Modifying
 	@Transactional
-	@Query(value = "UPDATE Employees u SET u.position=:position,u.name=:name,u.salary=:salary WHERE u.id = :id",nativeQuery = true)
+	@Query(value = "UPDATE Employees u SET u.position=:position,u.name=:name,u.salary=:salary WHERE u.id = :id", nativeQuery = true)
 	void saveEmpdetail(String id, String position, String name, Long salary);
 
+	@Query("SELECT CASE WHEN COUNT(d) > 0 THEN TRUE ELSE FALSE END FROM Employee d WHERE d.id = ?1")
+	Boolean isEmployeeExistById(Integer id);
+
+	
 }

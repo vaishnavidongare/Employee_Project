@@ -17,30 +17,30 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="employees")
+@Table(name = "employees")
 public class Employee {
 	@Id
-	@GeneratedValue(strategy= GenerationType.AUTO)
-	@Column(name="id")
+	//@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
 	private Integer id;
-	@Column(name="name")
+	@Column(name = "name")
 	private String name;
-	@Column(name="position")
+	@Column(name = "position")
 	private String des;
-	@Column(name="salary")
-	private Long salary;    
+	@Column(name = "salary")
+	private Long salary;
 	@ManyToOne()
-	@JoinColumn(name = "dept_id",referencedColumnName = "id")
-    Department department;
+	@JoinColumn(name = "dept_id", referencedColumnName = "id")
+	Department department;
 
 	@JsonIgnore
-	@OneToMany(cascade = CascadeType.ALL,mappedBy = "employee")
-    private List<Address> ad = new ArrayList<>();
-	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "employee")
+	private List<Address> ad = new ArrayList<>();
+
 	public Employee() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public Employee(Integer id, String name, String des, Long salary) {
 		super();
 		this.id = id;
@@ -48,28 +48,35 @@ public class Employee {
 		this.des = des;
 		this.salary = salary;
 	}
-	
+
 	public Integer getEid() {
 		return id;
 	}
+
 	public void setEid(Integer id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getDes() {
 		return des;
 	}
+
 	public void setDes(String des) {
 		this.des = des;
 	}
+
 	public Long getSalary() {
 		return salary;
 	}
+
 	public void setSalary(Long salary) {
 		this.salary = salary;
 	}
@@ -97,5 +104,5 @@ public class Employee {
 	public void setAd(List<Address> ad) {
 		this.ad = ad;
 	}
-	
+
 }
